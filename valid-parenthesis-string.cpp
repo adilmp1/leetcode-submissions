@@ -1,3 +1,31 @@
+// Greedy optimized solution
+    bool checkValidString(string s) 
+    {
+        int left=0;
+        int secondLeft=0;
+        for(int i=0;i<s.size();i++)
+        {
+            if(s[i]=='(')
+            {
+                left++;
+                secondLeft++;
+            }
+            else if(s[i]==')')
+            {
+                left--;
+                secondLeft--;
+            }
+            else
+            {
+                left++;
+                secondLeft--;
+            }
+            if(left<0) return false;
+            if(secondLeft<0) secondLeft=0;
+        }
+        return (secondLeft==0);
+    }
+
 // My Solution with DP
     bool checkValidStringHelper(string s,int curr,int val,int n,vector<vector<int>>& dp)
     {
